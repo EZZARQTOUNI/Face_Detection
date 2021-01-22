@@ -279,8 +279,8 @@ public class Main extends Application {
 				try {
 					Btn1(primaryStage,btnGoBack,btnListIm);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					primaryStage.setScene(Lastscene);
+
 				}
 
 			});
