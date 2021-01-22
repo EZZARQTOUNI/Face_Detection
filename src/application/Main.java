@@ -537,7 +537,7 @@ public class Main extends Application {
 			
 			int id=-1;
 			
-			//id=FRN.FaceRecognitionProcess(LoadLi.getAbsolutePath());
+			id=FRN.FaceRecognitionProcess(LoadLi.getAbsolutePath());
 			
 			if(id!=-1) {
 				final String CIN=UserInfo.getCIN(id);
