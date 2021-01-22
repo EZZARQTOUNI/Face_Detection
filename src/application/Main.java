@@ -533,58 +533,60 @@ public class Main extends Application {
 			ListEle.minHeight(60);
 
 			VBox Info=new VBox();
-//			String CIN="";
-//			FaceRecognition FRN=new FaceRecognition();
-//			int id=FRN.FaceRecognitionProcess(LoadLi.getAbsolutePath());
-//			if(id!=-1&& id!=null) {
-//				CIN=UserInfo.getCIN(id);
-//			}
-//		
-//			if(CIN!=null) {
-//				ArrayList<String> arr=new ArrayList<String>();
-//					 arr=UserInfo.getIn(CIN);
-//
-//				}
-//				String G=arr.get(7).equals("M")==true?"Male":"Female";
-//				Label Name=new Label("Name : "+arr.get(0)+" "+arr.get(1));
-//				Label Sexe=new Label("Genre : "+G);
-//				Label Age=new Label("Age : "+arr.get(5));
-//				Name.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
-//				Sexe.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
-//				Age.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
-//				Button btnL= new Button("More details ");
-//				btnL.setStyle("-fx-cursor: hand; -fx-font-size: 13; -fx-font-weight:700;  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");
-//				btnL.setWrapText(false);
-//				btnL.setMinHeight(40);
-//				btnL.addEventFilter(MouseEvent.MOUSE_ENTERED, e->{btnL.setStyle("-fx-cursor: hand;-fx-font-size: 13.8;\n -fx-font-weight:700;\n  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");});
-//				btnL.addEventFilter(MouseEvent.MOUSE_EXITED, e->{btnL.setStyle("-fx-cursor: hand;\n -fx-font-size: 13;\n -fx-font-weight:700;\n  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");});
-//				HBox x=new HBox();
-//				x.setAlignment(Pos.CENTER_RIGHT);
-//				x.getChildren().add(btnL);
-//				btnL.setOnAction(e->{
-//					Main01 Login=new Main01();
-//					Stage profil=new Stage();
-//					try {
-//						Login.ProfilS(profil,CIN);
-//					} catch (IOException | SQLException e1) {
-//					}
-//					profil.setOnCloseRequest(eventC->{});
-//					profil.show();
-//				});
-//				Info.getChildren().add(Name); 
-//				Info.getChildren().add(Sexe); 
-//				Info.getChildren().add(Age);
-//				Info.getChildren().add(x);
-//				
-//			}
-//			else {
+			FaceRecognition FRN=new FaceRecognition();
+			
+			int id=-1;
+			
+			//id=FRN.FaceRecognitionProcess(LoadLi.getAbsolutePath());
+			
+			if(id!=-1) {
+				final String CIN=UserInfo.getCIN(id);
+				
+			if(CIN!=null) {
+				ArrayList<String> arr=new ArrayList<String>();
+					 arr=UserInfo.getIn(CIN);
+
+				
+				String G=arr.get(7).equals("M")==true?"Male":"Female";
+				Label Name=new Label("Name : "+arr.get(0)+" "+arr.get(1));
+				Label Sexe=new Label("Genre : "+G);
+				Label Age=new Label("Age : "+arr.get(5));
+				Name.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
+				Sexe.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
+				Age.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
+				Button btnL= new Button("More details ");
+				btnL.setStyle("-fx-cursor: hand; -fx-font-size: 13; -fx-font-weight:700;  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");
+				btnL.setWrapText(false);
+				btnL.setMinHeight(40);
+				btnL.addEventFilter(MouseEvent.MOUSE_ENTERED, e->{btnL.setStyle("-fx-cursor: hand;-fx-font-size: 13.8;\n -fx-font-weight:700;\n  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");});
+				btnL.addEventFilter(MouseEvent.MOUSE_EXITED, e->{btnL.setStyle("-fx-cursor: hand;\n -fx-font-size: 13;\n -fx-font-weight:700;\n  -fx-border: none;\n -fx-background-color: transparent;\n -fx-text-fill: #9c27b0;");});
+				HBox x=new HBox();
+				x.setAlignment(Pos.CENTER_RIGHT);
+				x.getChildren().add(btnL);
+				btnL.setOnAction(e->{
+					Main01 Login=new Main01();
+					Stage profil=new Stage();
+					try {
+						Login.ProfilS(profil,CIN);
+					} catch (Exception e1) {
+					}
+					profil.setOnCloseRequest(eventC->{});
+					profil.show();
+				});
+				Info.getChildren().add(Name); 
+				Info.getChildren().add(Sexe); 
+				Info.getChildren().add(Age);
+				Info.getChildren().add(x);
+				}
+			}
+			else {
 				Label Sexe=new Label("Genre : "+ FaceDetection.GenderDet("images/Faces/"+k+"face.jpg"));
 				Label Age=new Label("Age : "+ FaceDetection.AgeDet("images/Faces/"+k+"face.jpg"));
 				Sexe.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
 				Age.setStyle("\n-fx-text-fill: black;\n-fx-font-size:14;\n-fx-font-weight:700;");
 				Info.getChildren().add(Sexe);
 				Info.getChildren().add(Age);
-//			}
+			}
 			ElementsE.setMargin(Info, new Insets(10,0,10,20));
 			ElementsE.setMargin(ListEle, new Insets(10,0,10,20));
 			Info.setAlignment(Pos.CENTER_LEFT);
